@@ -40,15 +40,15 @@ class ApiClient
      */
     public function sendRequest(Request $request)
     {
-        $header = array();
-        $header[] = 'Content-type: application/json';
-        $header[] = 'Authorization: Svea ' . $request->getAuthorizationToken();
-        $header[] = 'Timestamp: ' . $request->getTimestamp();
-        $header[] = 'Expect:';
+        $headers = array();
+        $headers[] = 'Content-type: application/json';
+        $headers[] = 'Authorization: Svea ' . $request->getAuthorizationToken();
+        $headers[] = 'Timestamp: ' . $request->getTimestamp();
+        $headers[] = 'Expect:';
 
         $this->httpClient->init();
         $this->httpClient->setOption(CURLOPT_URL, $request->getApiUrl());
-        $this->httpClient->setOption(CURLOPT_HTTPHEADER, $header);
+        $this->httpClient->setOption(CURLOPT_HTTPHEADER, $headers);
         $this->httpClient->setOption(CURLOPT_RETURNTRANSFER, 1);
         $this->httpClient->setOption(CURLOPT_HEADER, 1);
         $this->httpClient->setOption(CURLOPT_SSL_VERIFYPEER, false);
