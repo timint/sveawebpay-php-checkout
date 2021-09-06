@@ -8,9 +8,9 @@ class ValidateCreditOrderRowsWithFeeData extends ValidationService
 {
 	/**
 	 * Validate the provided data
-	 * 
+	 *
 	 * @param array $data
-	 * 
+	 *
 	 * @return void
 	 */
 	public function validate($data)
@@ -36,7 +36,7 @@ class ValidateCreditOrderRowsWithFeeData extends ValidationService
 	 * Validate order row ids
 	 *
 	 * @param array $data
-	 * 
+	 *
 	 * @return void
 	 */
 	private function validateRowIds($data)

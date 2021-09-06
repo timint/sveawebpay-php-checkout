@@ -18,9 +18,9 @@ class ValidateCreditOrderRowsData extends ValidationService
 
 	/**
 	 * Validate the provided data
-	 * 
+	 *
 	 * @param array $data
-	 * 
+	 *
 	 * @return void
 	 */
 	public function validate($data)
@@ -46,7 +46,7 @@ class ValidateCreditOrderRowsData extends ValidationService
 	 * Validate new credit row
 	 *
 	 * @param array $data
-	 * 
+	 *
 	 * @return void
 	 */
 	private function validateNewCreditRow($data)
@@ -59,7 +59,7 @@ class ValidateCreditOrderRowsData extends ValidationService
 	 * Validate row ids
 	 *
 	 * @param array $data
-	 * 
+	 *
 	 * @return void
 	 */
 	private function validateRowIds($data)
@@ -74,7 +74,7 @@ class ValidateCreditOrderRowsData extends ValidationService
 
 	/**
 	 * Check if this request contains a new credit row
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function isIsNewCreditRow()
@@ -84,9 +84,9 @@ class ValidateCreditOrderRowsData extends ValidationService
 
 	/**
 	 * Set if this request contains a new credit row
-	 * 
+	 *
 	 * @param boolean $isNewCreditRow
-	 * 
+	 *
 	 * @return void
 	 */
 	public function setIsNewCreditRow($isNewCreditRow)

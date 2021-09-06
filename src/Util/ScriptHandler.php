@@ -7,7 +7,7 @@ class ScriptHandler
 	const VENDOR_BIN_PATH = '/vendor/bin/';
 	const SRC_PATH = '/src/';
 	const TESTS_PATH = '/tests/';
-	
+
 	/**
 	 * Create log folder if folder does not exist
 	 */
@@ -27,7 +27,7 @@ class ScriptHandler
 		$logDestinationPath = $rootPath . '/build/logs/phploc.csv';
 		$srcPath = $rootPath . self::SRC_PATH;
 		$testsPath = $rootPath . self::TESTS_PATH;
-		
+
 		self::executeScript('phploc', "--log-csv $logDestinationPath $srcPath $testsPath --quiet");
 	}
 
@@ -106,7 +106,7 @@ class ScriptHandler
 	{
 		$rootPath = getcwd();
 		$command = $rootPath . self::VENDOR_BIN_PATH . "$command  $params";
-		
+
 		exec($command);
 	}
 }

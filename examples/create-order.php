@@ -121,7 +121,7 @@ try {
 	 *          - ArticleNumber
 	 *          - Name
 	 *          - Quantity
-	 *          - UnitPrice 
+	 *          - UnitPrice
 	 *          - VatPercent
 	 *          - Unit
 	 *          - TemporaryReference

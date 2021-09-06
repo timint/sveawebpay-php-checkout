@@ -269,7 +269,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
 		$this->inputData['rowcreditingoptions'] = [];
 		$this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
 	}
-	
+
 	public function testValidateWithoutRowCreditingOptions()
 	{
 		unset($this->inputData['rowcreditingoptions']);
