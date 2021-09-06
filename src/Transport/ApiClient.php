@@ -40,6 +40,11 @@ class ApiClient
 	 */
 	public function sendRequest(Request $request)
 	{
+
+		if (!in_array($request->getMethod(), ['GET', 'POST', 'PUT', 'PATCH'])) {
+			throw new Exception('Unknown request method ('. $request->getMethod() .')');
+		}
+
 		$headers = [];
 		$headers[] = 'Content-type: application/json';
 		$headers[] = 'Authorization: Svea ' . $request->getAuthorizationToken();
@@ -48,24 +53,14 @@ class ApiClient
 
 		$this->httpClient->init();
 		$this->httpClient->setOptions([
+			CURLOPT_CUSTOMREQUEST  => $request->getMethod(),
 			CURLOPT_URL            => $request->getApiUrl(),
 			CURLOPT_HTTPHEADER     => $headers,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_HEADER         => true,
 		]);
 
-		if ($request->getMethod() === 'POST') {
-			$this->httpClient->setOption(CURLOPT_POST, 1);
-			$this->httpClient->setOption(CURLOPT_POSTFIELDS, $request->getBody());
-		}
-
-		if ($request->getMethod() === 'PUT') {
-			$this->httpClient->setOption(CURLOPT_CUSTOMREQUEST, "PUT");
-			$this->httpClient->setOption(CURLOPT_POSTFIELDS, $request->getBody());
-		}
-
-		if ($request->getMethod() === 'PATCH') {
-			$this->httpClient->setOption(CURLOPT_CUSTOMREQUEST, "PATCH");
+		if (in_array($request->getMethod(), ['POST', 'PUT', 'PATCH'])) {
 			$this->httpClient->setOption(CURLOPT_POSTFIELDS, $request->getBody());
 		}
 
