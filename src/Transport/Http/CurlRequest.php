@@ -24,6 +24,14 @@ class CurlRequest implements HttpRequestInterface
 	}
 
 	/**
+	 * @param $options
+	 */
+	public function setOptions($options)
+	{
+		curl_setopt_array($this->handle, $options);
+	}
+
+	/**
 	 * @return mixed
 	 */
 	public function execute()

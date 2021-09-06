@@ -6,6 +6,8 @@ interface HttpRequestInterface
 {
 	public function setOption($name, $value);
 
+	public function setOptions($options);
+
 	public function init();
 
 	public function execute();

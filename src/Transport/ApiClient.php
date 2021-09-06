@@ -47,10 +47,12 @@ class ApiClient
 		$headers[] = 'Expect:';
 
 		$this->httpClient->init();
-		$this->httpClient->setOption(CURLOPT_URL, $request->getApiUrl());
-		$this->httpClient->setOption(CURLOPT_HTTPHEADER, $headers);
-		$this->httpClient->setOption(CURLOPT_RETURNTRANSFER, 1);
-		$this->httpClient->setOption(CURLOPT_HEADER, 1);
+		$this->httpClient->setOptions([
+			CURLOPT_URL            => $request->getApiUrl(),
+			CURLOPT_HTTPHEADER     => $headers,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_HEADER         => true,
+		]);
 
 		if ($request->getMethod() === 'POST') {
 			$this->httpClient->setOption(CURLOPT_POST, 1);
