@@ -13,7 +13,7 @@
  * If you do not use Composer, include the include.php file from root of the project
  * require_once '../include.php';
  */
-require_once '../include.php';
+require_once __DIR__.'/../include.php';
 
 /**
  * Create connector for given

@@ -13,15 +13,15 @@
  * If you do not use Composer, include the include.php file from root of the project
  * require_once '../../include.php';
  */
-require_once '../../include.php';
+require_once __DIR__.'/../../include.php';
 
 /**
  * Unique merchant ID
  * Shared Secret string between Svea and merchant
  * Base Url for SVEA Api. Can be TEST_ADMIN_BASE_URL and PROD_ADMIN_BASE_URL
  */
-$checkoutMerchantId = 100002;
-$checkoutSecret = "3862e010913d7c44f104ddb4b2881f810b50d5385244571c3327802e241140cc692522c04aa21c942793c8a69a8e55ca7b6131d9ac2a2ae2f4f7c52634fe30d2";
+$checkoutMerchantId = 200093;
+$checkoutSecret = "PFQOgSeRCy5fCuficPhVFcLFK8PJYHbjTK0cjfcuWwjaQhf6syI0pCGM3kdicF35wWv2Dc96NX8i2LYC3Tqz8l3rdnj8b3rrDoN4WmCqzMnCDxUswKpsoD6l2dZq3a4U";
 $baseUrl = \Svea\Checkout\Transport\Connector::TEST_ADMIN_BASE_URL;
 
 try {

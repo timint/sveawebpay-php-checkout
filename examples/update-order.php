@@ -12,7 +12,7 @@
  * If you do not use Composer, include the include.php file from root of the project
  * require_once '../include.php';
  */
-require_once '../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 /**
  * Create connector for given
