@@ -42,10 +42,10 @@ try {
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutAdminClient($conn);
 
-    $data = array(
+    $data = [
         "orderId" => 180212,
         "IsCancelled" => true
-    );
+    ];
 
     $response = $checkoutClient->cancelOrder($data);
 

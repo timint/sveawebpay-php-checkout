@@ -25,7 +25,7 @@ class ValidateGetAvailablePartPaymentCampaigns extends TestCase
     public function testValidateWithEmptyArray()
     {
         unset($this->inputGetAvailablePartPaymentCampaignsData);
-        $this->invokeMethod($this->validateGetAvailablePartPaymentCampaignsData, 'validate', array($this->inputUpdateData));
+        $this->invokeMethod($this->validateGetAvailablePartPaymentCampaignsData, 'validate', [$this->inputUpdateData]);
     }
 
     /**
@@ -35,7 +35,7 @@ class ValidateGetAvailablePartPaymentCampaigns extends TestCase
     public function testValidateWithNonBooleanType()
     {
         $this->inputGetAvailablePartPaymentCampaignsData['iscompany'] = "true";
-        $this->invokeMethod($this->validateGetAvailablePartPaymentCampaignsData, 'validate', array($this->inputUpdateData));
+        $this->invokeMethod($this->validateGetAvailablePartPaymentCampaignsData, 'validate', [$this->inputUpdateData]);
     }
 
     public function testValidateWithValidData()

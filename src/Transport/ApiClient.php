@@ -40,7 +40,7 @@ class ApiClient
      */
     public function sendRequest(Request $request)
     {
-        $headers = array();
+        $headers = [];
         $headers[] = 'Content-type: application/json';
         $headers[] = 'Authorization: Svea ' . $request->getAuthorizationToken();
         $headers[] = 'Timestamp: ' . $request->getTimestamp();

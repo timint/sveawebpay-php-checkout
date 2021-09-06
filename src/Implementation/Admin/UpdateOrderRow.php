@@ -32,7 +32,7 @@ class UpdateOrderRow extends AdminImplementationManager
      */
     public function prepareData($data)
     {
-        $orderRowData = array();
+        $orderRowData = [];
         if (isset($data['orderrow'])) {
             $orderRowData = $data['orderrow'];
         }
@@ -40,7 +40,7 @@ class UpdateOrderRow extends AdminImplementationManager
 
         $orderId = $data['orderid'];
         $orderRowId = $data['orderrowid'];
-        $urlParams = array($orderId, $orderRowId);
+        $urlParams = [$orderId, $orderRowId];
 
         $this->requestModel = new Request();
         $this->requestModel->setPatchMethod();

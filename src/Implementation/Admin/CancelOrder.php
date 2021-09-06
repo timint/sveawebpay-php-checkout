@@ -48,7 +48,7 @@ class CancelOrder extends AdminImplementationManager
      */
     public function prepareData($data)
     {
-        $requestData = array();
+        $requestData = [];
 
         if ($this->isCancelAmount === true) {
             $requestData['cancelledAmount'] = $data['cancelledamount'];
@@ -65,7 +65,7 @@ class CancelOrder extends AdminImplementationManager
         $this->requestModel->setPatchMethod();
         $this->requestModel->setBody(json_encode($requestData));
 
-        $urlParams = array($orderId);
+        $urlParams = [$orderId];
         $this->requestModel->setApiUrl($this->prepareUrl($urlParams));
     }
 

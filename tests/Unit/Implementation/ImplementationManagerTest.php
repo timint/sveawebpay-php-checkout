@@ -14,8 +14,8 @@ class ImplementationManagerTest extends TestCase
          * @var ImplementationManager|\PHPUnit_Framework_MockObject_MockObject $mock
          */
         $mock = $this->getMockBuilder('\Svea\Checkout\Implementation\ImplementationManager')
-            ->setConstructorArgs(array($this->connectorMock, $validatorServiceMock))
-            ->setMethods(array('validateData', 'prepareData', 'invoke'))
+            ->setConstructorArgs([$this->connectorMock, $validatorServiceMock])
+            ->setMethods(['validateData', 'prepareData', 'invoke'])
             ->getMock();
 
         $mock->expects($this->once())

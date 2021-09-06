@@ -39,25 +39,25 @@ class CreditOrderRowsWithFeeTest extends TestCase
 	 */
     public function testPrepareData()
     {
-        $inputData = array(
+        $inputData = [
             'orderid' => 201,
             'deliveryid' => 1,
-            'orderrowids' => array(1, 2),
-			'fee' => array(
+            'orderrowids' => [1, 2],
+			'fee' => [
 				'articlenumber' => '123456',
 				'name' => 'Tomatoes',
 				'quantity' => 10,
 				'unitprice' => 600,
 				'discountpercent' => 1000,
 				'vatpercent' => 2500
-			),
-			'rowcreditingoptions' => array(
-				array(
+			],
+			'rowcreditingoptions' => [
+				[
 					'orderrowid' => 1,
 					'quantity' => 1,
-				)
-			)
-        );
+				]
+			]
+        ];
         $this->creditOrderRowsWithFee->prepareData($inputData);
 
         $requestModel = $this->creditOrderRowsWithFee->getRequestModel();

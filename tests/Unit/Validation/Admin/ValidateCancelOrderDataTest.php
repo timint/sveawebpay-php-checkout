@@ -22,10 +22,10 @@ class ValidateCancelOrderDataTest extends TestCase
         parent::setUp();
         $this->validateCancelOrder = new ValidateCancelOrderData();
 
-        $this->inputData = array(
+        $this->inputData = [
             'orderid' => 204,
             'cancelledamount' => 500
-        );
+        ];
     }
 
     /**
@@ -35,7 +35,7 @@ class ValidateCancelOrderDataTest extends TestCase
     public function testValidateWithoutOrderId()
     {
         unset($this->inputData['orderid']);
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -45,7 +45,7 @@ class ValidateCancelOrderDataTest extends TestCase
     public function testValidateWithOrderIdAsString()
     {
         $this->inputData['orderid'] = '204';
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -55,7 +55,7 @@ class ValidateCancelOrderDataTest extends TestCase
     public function testValidateWithEmptyOrderId()
     {
         $this->inputData['orderid'] = '';
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -65,7 +65,7 @@ class ValidateCancelOrderDataTest extends TestCase
     public function testValidateWithNullOrderId()
     {
         $this->inputData['orderid'] = null;
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -75,12 +75,12 @@ class ValidateCancelOrderDataTest extends TestCase
     public function testValidateWithOrderIdAsDecimal()
     {
         $this->inputData['orderid'] = 204.5;
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     public function testValidateWithOrderIdAsInteger()
     {
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -92,14 +92,14 @@ class ValidateCancelOrderDataTest extends TestCase
         $this->inputData['cancelledamount'] = '204';
         $this->validateCancelOrder->setIsCancelAmount(true);
 
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     public function testValidateWithAmountWithoutCancelAmountFlag()
     {
         $this->inputData['cancelledamount'] = 'aaa';
 
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -111,7 +111,7 @@ class ValidateCancelOrderDataTest extends TestCase
         $this->inputData['cancelledamount'] = '';
         $this->validateCancelOrder->setIsCancelAmount(true);
 
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -123,7 +123,7 @@ class ValidateCancelOrderDataTest extends TestCase
         $this->inputData['cancelledamount'] = 204.5;
         $this->validateCancelOrder->setIsCancelAmount(true);
 
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -135,11 +135,11 @@ class ValidateCancelOrderDataTest extends TestCase
         unset($this->inputData['cancelledamount']);
         $this->validateCancelOrder->setIsCancelAmount(true);
 
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 
     public function testValidateWithAmountAsInteger()
     {
-        $this->invokeMethod($this->validateCancelOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCancelOrder, 'validate', [$this->inputData]);
     }
 }

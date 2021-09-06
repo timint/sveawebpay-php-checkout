@@ -9,9 +9,9 @@ class ValidateGetOrderDataTest extends TestCase
 {
     public function testValidateWithOrderIdAsIntInArray()
     {
-        $data = array(
+        $data = [
             'orderid' => 1234
-        );
+        ];
         $validateGetOrder = new ValidateGetOrderData();
         $validateGetOrder->validate($data);
     }
@@ -33,7 +33,7 @@ class ValidateGetOrderDataTest extends TestCase
      */
     public function testValidateWithoutOrderId()
     {
-        $data = array();
+        $data = [];
         $validateGetOrder = new ValidateGetOrderData();
         $validateGetOrder->validate($data);
     }
@@ -66,9 +66,9 @@ class ValidateGetOrderDataTest extends TestCase
      */
     public function testValidateWithOrderIdAsStringInArray()
     {
-        $data = array(
+        $data = [
             'orderid' => '1234'
-        );
+        ];
         $validateGetOrder = new ValidateGetOrderData();
         $validateGetOrder->validate($data);
     }
@@ -79,9 +79,9 @@ class ValidateGetOrderDataTest extends TestCase
      */
     public function testValidateWithEmptyStringInArray()
     {
-        $data = array(
+        $data = [
             'orderid' => ''
-        );
+        ];
         $validateGetOrder = new ValidateGetOrderData();
         $validateGetOrder->validate($data);
     }

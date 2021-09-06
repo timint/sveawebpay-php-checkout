@@ -42,10 +42,10 @@ try {
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutAdminClient($conn);
 
-    $data = array(
+    $data = [
         "orderId" => 180221, // required - Long  filed (Specified Checkout order for cancel amount)
         "orderRowId" => 2, // required - Long - Id of the specified row.
-    );
+    ];
 
     $response = $checkoutClient->cancelOrderRow($data);
     if ($response === '') {

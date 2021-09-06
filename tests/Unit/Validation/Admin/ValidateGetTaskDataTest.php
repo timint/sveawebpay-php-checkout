@@ -13,7 +13,7 @@ class ValidateGetTaskDataTest extends TestCase
      */
     public function testValidateGetTaskWithoutLocationUrl()
     {
-        $data = array();
+        $data = [];
         $validateGetOrder = new ValidateGetTaskData();
         $validateGetOrder->validate($data);
     }
@@ -24,9 +24,9 @@ class ValidateGetTaskDataTest extends TestCase
      */
     public function testValidateGetTaskWithEmptyLocationUrl()
     {
-        $data = array(
+        $data = [
             'locationUrl' => ''
-        );
+        ];
         $validateGetOrder = new ValidateGetTaskData();
         $validateGetOrder->validate($data);
     }
@@ -37,9 +37,9 @@ class ValidateGetTaskDataTest extends TestCase
      */
     public function testValidateGetTaskWithInvalidLocationUrl()
     {
-        $data = array(
+        $data = [
             'locationUrl' => 'dev.svea.com'
-        );
+        ];
         $validateGetOrder = new ValidateGetTaskData();
         $validateGetOrder->validate($data);
     }
@@ -50,18 +50,18 @@ class ValidateGetTaskDataTest extends TestCase
      */
     public function testValidateGetTaskWithNullLocationUrl()
     {
-        $data = array(
+        $data = [
             'locationUrl' => null
-        );
+        ];
         $validateGetOrder = new ValidateGetTaskData();
         $validateGetOrder->validate($data);
     }
 
     public function testValidateGetTaskWithValidLocationUrl()
     {
-        $data = array(
+        $data = [
             'locationurl' => 'http://webpaypaymentadminapi.test.svea.com/api/v1/queue/1'
-        );
+        ];
         $validateGetOrder = new ValidateGetTaskData();
         $validateGetOrder->validate($data);
     }

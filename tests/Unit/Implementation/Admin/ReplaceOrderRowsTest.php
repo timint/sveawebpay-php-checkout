@@ -32,27 +32,27 @@ class ReplaceOrderRowTest extends TestCase
     {
         $orderId = 201;
 
-        $inputData = array(
+        $inputData = [
             'orderid' => $orderId,
-            'orderrows' => array(
-				array(
+            'orderrows' => [
+				[
 					"articlenumber" => "prod-01",
 					"name" => "someProd",
 					"quantity" => 300,
 					"unitprice" => 5000,
 					"vatpercent" => 0,
 					"unit" => "pc"
-				),
-				array(
+				],
+				[
 					"articlenumber" => "prod-02",
 					"name" => "someProd 2",
 					"quantity" => 500,
 					"unitprice" => 2000,
 					"vatpercent" => 0,
 					"unit" => "st"
-				)
-            )
-        );
+				]
+            ]
+        ];
         $this->replaceOrderRows->prepareData($inputData);
 
         $requestModel = $this->replaceOrderRows->getRequestModel();

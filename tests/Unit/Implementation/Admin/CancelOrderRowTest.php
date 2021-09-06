@@ -30,10 +30,10 @@ class CancelOrderRowTest extends TestCase
 
     public function testPrepareData()
     {
-        $inputData = array(
+        $inputData = [
             'orderid' => 201,
             'orderrowid' => 1
-        );
+        ];
         $this->cancelOrderRow->prepareData($inputData);
 
         $requestModel = $this->cancelOrderRow->getRequestModel();

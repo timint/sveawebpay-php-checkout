@@ -130,12 +130,12 @@ class Connector
      */
     private function validateBaseApiUrl()
     {
-        $availableUrls = array(
+        $availableUrls = [
             self::TEST_BASE_URL,
             self::PROD_BASE_URL,
             self::TEST_ADMIN_BASE_URL,
             self::PROD_ADMIN_BASE_URL
-        );
+        ];
 
         if (empty($this->baseApiUrl)) {
             throw new SveaConnectorException(

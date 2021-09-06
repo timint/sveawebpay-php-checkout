@@ -24,7 +24,7 @@ abstract class AdminImplementationManager extends ImplementationManager
     protected function prepareUrl($data)
     {
         if (!is_array($data)) {
-            $data = array($data);
+            $data = [$data];
         }
 
         if (!isset($this->apiUrl)) {

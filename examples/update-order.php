@@ -47,12 +47,12 @@ try {
     /**
      * Example of update the order and getting the response data
      */
-    $data = array(
+    $data = [
         "orderId" => 251147,
         "merchantData" => "test",
-        "cart" => array(
-            "items" => array(
-                array(
+        "cart" => [
+            "items" => [
+                [
                     "articleNumber" => "123456",
                     "name" => "Yellow rubber duck",
                     "quantity" => 200,
@@ -61,8 +61,8 @@ try {
                     "vatPercent" => 2500,
                     "temporaryReference" => "230",
                     "merchantData" => "Size: M"
-                ),
-                array(
+                ],
+                [
                     "type" => "shipping_fee",
                     "articleNumber" => "658475",
                     "name" => "Shipping Fee Updated",
@@ -71,10 +71,10 @@ try {
                     "vatPercent" => 2500,
                     "temporaryReference" => "231",
                     "merchantData" => null
-                )
-            )
-        )
-    );
+                ]
+            ]
+        ]
+    ];
 
     $response = $checkoutClient->update($data);
 

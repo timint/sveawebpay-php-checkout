@@ -51,7 +51,7 @@ class CreditOrderRows extends AdminImplementationManager
      */
     public function prepareData($data)
     {
-        $requestData = array();
+        $requestData = [];
         if ($this->isNewCreditRow === true) {
             $requestData['newCreditOrderRow'] = $data['newcreditrow'];
         } else {
@@ -64,7 +64,7 @@ class CreditOrderRows extends AdminImplementationManager
 
         $orderId = $data['orderid'];
         $deliveryId = $data['deliveryid'];
-        $urlParams = array($orderId, $deliveryId);
+        $urlParams = [$orderId, $deliveryId];
 
         $this->requestModel = new Request();
         $this->requestModel->setPostMethod();

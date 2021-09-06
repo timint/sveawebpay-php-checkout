@@ -42,9 +42,9 @@ try {
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutAdminClient($conn);
 
-    $data = array(
+    $data = [
         "orderId" => 65017,        // required - Long  filed (Specified Checkout order for cancel amount)
-        "orderRow" => array(
+        "orderRow" => [
             "ArticleNumber" => "prod-04",
             "Name" => "someProd",
             "Quantity" => 300, // minor unit
@@ -52,15 +52,15 @@ try {
             "DiscountPercent" => "", // optional 0-100 minor unit
             "VatPercent" => 0,       // required - 0, 6, 12, 25
             "Unit" => "pc"           // optional st, pc, kg, etc.
-        )
-    );
+        ]
+    ];
 
     $response = $checkoutClient->addOrderRow($data);
     $location = $response['HeaderLocation'];
 
-    $data = array(
+    $data = [
         "locationUrl" => $location
-    );
+    ];
 
     $response = $checkoutClient->getTask($data);
 

@@ -30,10 +30,10 @@ class DeliverOrderTest extends TestCase
 
     public function testPrepareData()
     {
-        $inputData = array(
+        $inputData = [
             'orderid' => 201,
-            'orderrowids' => array(1, 2)
-        );
+            'orderrowids' => [1, 2]
+        ];
         $this->deliverOrder->prepareData($inputData);
 
         $requestModel = $this->deliverOrder->getRequestModel();

@@ -39,7 +39,7 @@ class GetOrder extends AdminImplementationManager
         $this->requestModel = new Request();
         $this->requestModel->setGetMethod();
 
-        $urlParams = array($orderId);
+        $urlParams = [$orderId];
         $this->requestModel->setApiUrl($this->prepareUrl($urlParams));
     }
 

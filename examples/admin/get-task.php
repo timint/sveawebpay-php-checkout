@@ -40,9 +40,9 @@ try {
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutAdminClient($conn);
 
-    $data = array(
+    $data = [
         "locationUrl" => 'https://paymentadminapistage.svea.com/api/v1/queue/9'
-    );
+    ];
 
     $response = $checkoutClient->getTask($data);
 

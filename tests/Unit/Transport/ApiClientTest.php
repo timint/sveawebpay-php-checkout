@@ -88,16 +88,16 @@ class ApiClientTest extends TestCase
      */
     public function testSendRequestWithCustomErrorResponse()
     {
-        $arrayData = array(
+        $arrayData = [
             "Code" => 2001,
             "Message" => "Global error message",
-            "Errors" => array(
-                array(
+            "Errors" => [
+                [
                     "Code" => 2002,
                     "ErrorMessage" => "Specific error message"
-                )
-            )
-        );
+                ]
+            ]
+        ];
         $apiResponse = 'HTTP/1.1 400 Bad request' . "\r\n";
         $apiResponse .= 'Cache-Control: no-cache' . "\r\n";
         $apiResponse .= 'Date: Wed, 27 Apr 2016 09:42:19 GMT';

@@ -33,7 +33,7 @@ class GetAvailablePartPaymentCampaignsTest extends TestCase
         $this->connectorMock->expects($this->once())
             ->method('getBaseApiUrl');
 
-        $data = array('iscompany' => true);
+        $data = ['iscompany' => true];
         $this->getAvailablePartPaymentCampaigns->prepareData($data);
 
         $requestModel = $this->getAvailablePartPaymentCampaigns->getRequestModel();
@@ -60,7 +60,7 @@ class GetAvailablePartPaymentCampaignsTest extends TestCase
 
     public function testValidate()
     {
-        $data = array('iscompany' => false);
+        $data = ['iscompany' => false];
         $this->validatorMock->expects($this->once())
             ->method('validate');
 

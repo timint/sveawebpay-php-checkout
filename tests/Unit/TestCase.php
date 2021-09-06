@@ -89,7 +89,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
      *
      * @return mixed Method return.
      */
-    protected function invokeMethod($object, $methodName, array $parameters = array())
+    protected function invokeMethod($object, $methodName, array $parameters = [])
     {
         $reflection = new \ReflectionClass(get_class($object));
         $method = $reflection->getMethod($methodName);
@@ -116,14 +116,14 @@ class TestCase extends \PHPUnit_Framework_TestCase
     {
         $httpClientMock = $this->getMockBuilder('Svea\Checkout\Transport\Http\HttpRequestInterface')->getMock();
         $this->apiClientMock = $this->getMockBuilder('\Svea\Checkout\Transport\ApiClient')
-            ->setConstructorArgs(array($httpClientMock))
+            ->setConstructorArgs([$httpClientMock])
             ->getMock();
     }
 
     private function setConnector()
     {
         $this->connectorMock = $this->getMockBuilder('Svea\Checkout\Transport\Connector')
-            ->setConstructorArgs(array($this->apiClientMock, $this->merchantId, $this->sharedSecret, $this->apiUrl))
+            ->setConstructorArgs([$this->apiClientMock, $this->merchantId, $this->sharedSecret, $this->apiUrl])
             ->getMock();
     }
 
@@ -191,69 +191,69 @@ JSON;
 
     private function setInputCreateData()
     {
-        $this->inputCreateData = array(
+        $this->inputCreateData = [
             "countrycode" => "SE",
             "currency" => "SEK",
             "locale" => "sv-SE",
-            "cart" => array(
-                "items" => array(
-                    array(
+            "cart" => [
+                "items" => [
+                    [
                         "articlenumber" => "123456",
                         "name" => "Tomatoes",
                         "quantity" => 10,
                         "unitprice" => 600,
                         "discountpercent" => 1000,
                         "vatpercent" => 2500
-                    ),
-                    array(
+                    ],
+                    [
                         "articlenumber" => "654321",
                         "name" => "Bananas",
                         "quantity" => 1,
                         "unitprice" => 500,
                         "discountpercent" => 900,
                         "vatpercent" => 2000
-                    )
-                )
-            ),
+                    ]
+                ]
+            ],
             "clientordernumber" => '12312312312213231',
-            "merchantsettings" => array(
+            "merchantsettings" => [
                 "termsuri" => "http://www.merchant.com/toc",
                 "checkouturi" => "http://www.merchant.com/checkout?svea_order_id={checkout.order.id}",
                 "confirmationuri" => "http://www.merchant.com/thank-you?svea_order_id={checkout.order.id}",
                 "pushuri" => "http://www.merchant.com/create_order?svea_order_id={checkout.order.id}"
-            )
-        );
+            ]
+        ];
     }
 
     private function setInputUpdateData()
     {
-        $this->inputUpdateData = array(
+        $this->inputUpdateData = [
             "orderid" => 4,
-            "cart" => array(
-                "items" => array(
-                    array(
+            "cart" => [
+                "items" => [
+                    [
                         "articlenumber" => "123456789",
                         "name" => "Dator",
                         "quantity" => 200,
                         "unitprice" => 12300,
                         "discountpercent" => 1000,
                         "vatpercent" => 2500
-                    ),
-                    array(
+                    ],
+                    [
                         "type" => "shipping_fee",
                         "articlenumber" => "SHIPPING",
                         "name" => "Shipping fee",
                         "quantity" => 100,
                         "unitprice" => 4900,
                         "vatpercent" => 2500
-                    )
-                )
-            )
-        );
+                    ]
+                ]
+            ]
+        ];
     }
 
     private function setInputGetAvailablePartPaymentCampaignsData()
     {
-        $this->inputGetAvailablePartPaymentCampaignsData = array("IsCompany" => false);
+        $this->inputGetAvailablePartPaymentCampaignsData = ["IsCompany" => false];
     }
 }

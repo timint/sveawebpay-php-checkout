@@ -37,7 +37,7 @@ class AddOrderRow extends AdminImplementationManager
         $this->requestModel->setPostMethod();
         $this->requestModel->setBody(json_encode($requestData));
 
-        $urlParams = array($orderId);
+        $urlParams = [$orderId];
         $this->requestModel->setApiUrl($this->prepareUrl($urlParams));
     }
 

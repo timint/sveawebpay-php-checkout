@@ -25,7 +25,7 @@ class ValidateUpdateOrderDataTest extends TestCase
     public function testValidateOrderIdWithUnsetField()
     {
         unset($this->inputUpdateData['orderid']);
-        $this->invokeMethod($this->validateUpdateOrderData, 'validate', array($this->inputUpdateData));
+        $this->invokeMethod($this->validateUpdateOrderData, 'validate', [$this->inputUpdateData]);
     }
 
     /**
@@ -35,7 +35,7 @@ class ValidateUpdateOrderDataTest extends TestCase
     public function testValidateOrderIdWithEmptyStringFiled()
     {
         $this->inputUpdateData['orderid'] = '';
-        $this->invokeMethod($this->validateUpdateOrderData, 'validate', array($this->inputUpdateData));
+        $this->invokeMethod($this->validateUpdateOrderData, 'validate', [$this->inputUpdateData]);
     }
 
     /**
@@ -45,13 +45,13 @@ class ValidateUpdateOrderDataTest extends TestCase
     public function testValidateOrderIdWithFalseValueField()
     {
         $this->inputUpdateData['orderid'] = false;
-        $this->invokeMethod($this->validateUpdateOrderData, 'validate', array($this->inputUpdateData));
+        $this->invokeMethod($this->validateUpdateOrderData, 'validate', [$this->inputUpdateData]);
     }
 
     public function testValidateOrderIdWithZeroValueField()
     {
         $this->inputUpdateData['orderid'] = 1230;
-        $this->invokeMethod($this->validateUpdateOrderData, 'validate', array($this->inputUpdateData));
+        $this->invokeMethod($this->validateUpdateOrderData, 'validate', [$this->inputUpdateData]);
     }
 
     public function testValidateWithValidData()

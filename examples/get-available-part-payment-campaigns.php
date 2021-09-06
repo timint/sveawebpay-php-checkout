@@ -44,9 +44,9 @@ try {
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutClient($conn);
 
-    $data = array(
+    $data = [
         'IsCompany' => false
-    );
+    ];
     $response = $checkoutClient->getAvailablePartPaymentCampaigns($data);
     echo "<pre>" . print_r($response, true) . "</pre>";
 

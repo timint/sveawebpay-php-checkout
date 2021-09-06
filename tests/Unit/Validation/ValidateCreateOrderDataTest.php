@@ -25,7 +25,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateGeneralDataWithNoArrayData()
     {
         $this->inputCreateData = '';
-        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', [$this->inputCreateData]);
     }
 
     /**
@@ -35,7 +35,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateGeneralDataWithoutRequiredFields()
     {
         unset($this->inputCreateData['locale']);
-        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', [$this->inputCreateData]);
     }
 
     /**
@@ -45,7 +45,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateGeneralDataWithEmptyStringFiled()
     {
         $this->inputCreateData['locale'] = '';
-        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', [$this->inputCreateData]);
     }
 
     /**
@@ -55,7 +55,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateGeneralDataWithFalseValueField()
     {
         $this->inputCreateData['locale'] = false;
-        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', [$this->inputCreateData]);
     }
 
     /**
@@ -65,7 +65,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateGeneralDataWithZeroValueField()
     {
         $this->inputCreateData['locale'] = 0;
-        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateGeneralData', [$this->inputCreateData]);
     }
 
     /**
@@ -75,7 +75,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateMerchantWithoutData()
     {
         unset($this->inputCreateData['merchantsettings']);
-        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', [$this->inputCreateData]);
     }
 
     /**
@@ -85,7 +85,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateMerchantWithNoArrayData()
     {
         $this->inputCreateData['merchantsettings'] = '';
-        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', [$this->inputCreateData]);
     }
 
     /**
@@ -95,7 +95,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateMerchantWithoutRequiredFields()
     {
         unset($this->inputCreateData['merchantsettings']['checkouturi']);
-        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', [$this->inputCreateData]);
     }
 
     /**
@@ -105,7 +105,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateMerchantWithEmptyStringFiled()
     {
         $this->inputCreateData['merchantsettings']['checkouturi'] = '';
-        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', [$this->inputCreateData]);
     }
 
     /**
@@ -115,7 +115,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateMerchantWithFalseValueField()
     {
         $this->inputCreateData['merchantsettings']['checkouturi'] = false;
-        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', [$this->inputCreateData]);
     }
 
     /**
@@ -125,7 +125,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateMerchantWithZeroValueField()
     {
         $this->inputCreateData['merchantsettings']['checkouturi'] = 0;
-        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateMerchant', [$this->inputCreateData]);
     }
 
     /**
@@ -135,7 +135,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateOrderCartWithCartNoArrayData()
     {
         $this->inputCreateData['cart'] = '';
-        $this->invokeMethod($this->validateCreateOrderData, 'validateOrderCart', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateOrderCart', [$this->inputCreateData]);
     }
 
     /**
@@ -145,7 +145,7 @@ class ValidateCreateOrderDataTest extends TestCase
     public function testValidateOrderCartWithItemsNoArrayData()
     {
         $this->inputCreateData['cart']['items'] = '';
-        $this->invokeMethod($this->validateCreateOrderData, 'validateOrderCart', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateOrderCart', [$this->inputCreateData]);
     }
 
     /**
@@ -154,13 +154,13 @@ class ValidateCreateOrderDataTest extends TestCase
      */
     public function testValidateOrderCartWithCartEmptyArrayData()
     {
-        $this->inputCreateData['cart'] = array();
-        $this->invokeMethod($this->validateCreateOrderData, 'validateOrderCart', array($this->inputCreateData));
+        $this->inputCreateData['cart'] = [];
+        $this->invokeMethod($this->validateCreateOrderData, 'validateOrderCart', [$this->inputCreateData]);
     }
 
     public function testValidateOrderCartWithValidData()
     {
-        $this->invokeMethod($this->validateCreateOrderData, 'validateOrderCart', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateOrderCart', [$this->inputCreateData]);
     }
 
     public function testValidateWithValidData()
@@ -170,7 +170,7 @@ class ValidateCreateOrderDataTest extends TestCase
 
     public function testValidateOrderClientOrderNumberWithGoodData()
     {
-        $this->invokeMethod($this->validateCreateOrderData, 'validateClientOrderNumber', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateClientOrderNumber', [$this->inputCreateData]);
     }
 
     /**
@@ -181,7 +181,7 @@ class ValidateCreateOrderDataTest extends TestCase
     {
         unset($this->inputCreateData['clientordernumber']);
 
-        $this->invokeMethod($this->validateCreateOrderData, 'validateClientOrderNumber', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateClientOrderNumber', [$this->inputCreateData]);
     }
 
     /**
@@ -192,6 +192,6 @@ class ValidateCreateOrderDataTest extends TestCase
     {
         $this->inputCreateData['clientordernumber'] = '123-das-321-1231123-das-321-1231123-das-321-1231';
 
-        $this->invokeMethod($this->validateCreateOrderData, 'validateClientOrderNumber', array($this->inputCreateData));
+        $this->invokeMethod($this->validateCreateOrderData, 'validateClientOrderNumber', [$this->inputCreateData]);
     }
 }

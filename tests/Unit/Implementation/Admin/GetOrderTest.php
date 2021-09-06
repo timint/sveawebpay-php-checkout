@@ -32,7 +32,7 @@ class GetOrderTest extends TestCase
         $this->connectorMock->expects($this->once())
             ->method('getBaseApiUrl');
 
-        $data = array('orderid' => 5);
+        $data = ['orderid' => 5];
         $this->getOrder->prepareData($data);
 
         $requestModel = $this->getOrder->getRequestModel();
@@ -59,7 +59,7 @@ class GetOrderTest extends TestCase
 
     public function testValidate()
     {
-        $data = array('orderid' => 5);
+        $data = ['orderid' => 5];
         $this->validatorMock->expects($this->once())
             ->method('validate');
 

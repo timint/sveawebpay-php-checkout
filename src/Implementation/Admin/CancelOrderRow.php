@@ -32,12 +32,12 @@ class CancelOrderRow extends AdminImplementationManager
      */
     public function prepareData($data)
     {
-        $requestData = array();
+        $requestData = [];
         $requestData['isCancelled'] = true; // Determines that this order is cancelled
 
         $orderId = $data['orderid'];
         $orderRowId = $data['orderrowid'];
-        $urlParams = array($orderId, $orderRowId);
+        $urlParams = [$orderId, $orderRowId];
 
         $this->requestModel = new Request();
         $this->requestModel->setPatchMethod();

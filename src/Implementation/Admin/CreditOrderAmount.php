@@ -35,13 +35,13 @@ class CreditOrderAmount extends AdminImplementationManager
      */
     public function prepareData($data)
     {
-        $requestData = array();
+        $requestData = [];
         $requestData['creditedAmount'] = $data['creditedamount'];
 
         $orderId = $data['orderid'];
         $deliveryId = $data['deliveryid'];
 
-        $urlParams = array($orderId, $deliveryId);
+        $urlParams = [$orderId, $deliveryId];
 
         $this->requestModel = new Request();
         $this->requestModel->setPatchMethod();

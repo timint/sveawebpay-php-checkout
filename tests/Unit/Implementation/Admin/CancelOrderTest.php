@@ -30,10 +30,10 @@ class CancelOrderTest extends TestCase
 
     public function testPrepareDataCancelOrder()
     {
-        $inputData = array(
+        $inputData = [
             'orderid' => 1,
             'cancelledamount' => 15000
-        );
+        ];
 
         $this->cancelOrder->prepareData($inputData);
 
@@ -46,10 +46,10 @@ class CancelOrderTest extends TestCase
 
     public function testPrepareDataCancelOrderAmount()
     {
-        $inputData = array(
+        $inputData = [
             'orderid' => 1,
             'cancelledamount' => 15000
-        );
+        ];
 
         $this->cancelOrder->setIsCancelAmount(true);
         $this->cancelOrder->prepareData($inputData);

@@ -30,7 +30,7 @@ class GetTaskTest extends TestCase
     public function testPrepareData()
     {
         $locationUrl = 'http://webpaypaymentadminapi.test.svea.com/api/v1/queue/1';
-        $data = array('locationurl' => $locationUrl);
+        $data = ['locationurl' => $locationUrl];
         $this->getTask->prepareData($data);
 
         $requestModel = $this->getTask->getRequestModel();
@@ -58,7 +58,7 @@ class GetTaskTest extends TestCase
 
     public function testValidate()
     {
-        $data = array('locationurl' => 'http://webpaypaymentadminapi.test.svea.com/api/v1/queue/1');
+        $data = ['locationurl' => 'http://webpaypaymentadminapi.test.svea.com/api/v1/queue/1'];
         $this->validatorMock->expects($this->once())
             ->method('validate');
 

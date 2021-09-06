@@ -22,10 +22,10 @@ class ValidateDeliverOrderDataTest extends TestCase
         parent::setUp();
         $this->validateDeliverOrder = new ValidateDeliverOrderData();
 
-        $this->inputData = array(
+        $this->inputData = [
             "orderid" => 201,
-            'orderrowids' => array(1, 2)
-        );
+            'orderrowids' => [1, 2]
+        ];
     }
 
     /**
@@ -35,7 +35,7 @@ class ValidateDeliverOrderDataTest extends TestCase
     public function testValidateWithoutOrderId()
     {
         unset($this->inputData['orderid']);
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -45,7 +45,7 @@ class ValidateDeliverOrderDataTest extends TestCase
     public function testValidateWithOrderIdAsString()
     {
         $this->inputData['orderid'] = '204';
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -55,7 +55,7 @@ class ValidateDeliverOrderDataTest extends TestCase
     public function testValidateWithEmptyOrderId()
     {
         $this->inputData['orderid'] = '';
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -65,7 +65,7 @@ class ValidateDeliverOrderDataTest extends TestCase
     public function testValidateWithNullOrderId()
     {
         $this->inputData['orderid'] = null;
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -75,7 +75,7 @@ class ValidateDeliverOrderDataTest extends TestCase
     public function testValidateWithOrderIdAsDecimal()
     {
         $this->inputData['orderid'] = 204.5;
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -85,7 +85,7 @@ class ValidateDeliverOrderDataTest extends TestCase
     public function testValidateWithOrderIdAsIntAndWithoutOrderRowIds()
     {
         unset($this->inputData['orderrowids']);
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -95,7 +95,7 @@ class ValidateDeliverOrderDataTest extends TestCase
     public function testValidateWithOrderIdAsIntAndWithOrderRowIdsAsInt()
     {
         $this->inputData['orderrowids'] = 1;
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -103,8 +103,8 @@ class ValidateDeliverOrderDataTest extends TestCase
      */
     public function testValidateWithOrderIdAsIntAndWithOrderRowIdsAsEmptyArray()
     {
-        $this->inputData['orderrowids'] = array();
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->inputData['orderrowids'] = [];
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -113,8 +113,8 @@ class ValidateDeliverOrderDataTest extends TestCase
      */
     public function testValidateWithOrderIdAsIntAndWithOrderRowIdsAsArrayWithStrings()
     {
-        $this->inputData['orderrowids'] = array('1');
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->inputData['orderrowids'] = ['1'];
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     /**
@@ -123,13 +123,13 @@ class ValidateDeliverOrderDataTest extends TestCase
      */
     public function testValidateWithOrderIdAsIntAndWithOrderRowIdsAsArrayWithDecimalValue()
     {
-        $this->inputData['orderrowids'] = array(1.5);
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->inputData['orderrowids'] = [1.5];
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
     public function testValidateWithOrderIdAsInteger()
     {
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
 	/**
@@ -138,13 +138,13 @@ class ValidateDeliverOrderDataTest extends TestCase
      */
     public function testValidateWithEmptyRowDeliveryOptions()
     {
-        $this->inputData['rowdeliveryoptions'] = array();
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->inputData['rowdeliveryoptions'] = [];
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 
 	public function testValidateWithoutRowDeliveryOptions()
     {
         unset($this->inputData['rowdeliveryoptions']);
-        $this->invokeMethod($this->validateDeliverOrder, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateDeliverOrder, 'validate', [$this->inputData]);
     }
 }

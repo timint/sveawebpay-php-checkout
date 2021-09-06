@@ -41,11 +41,11 @@ try {
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutAdminClient($conn);
 
-    $data = array(
+    $data = [
         "orderId" => 2572093, // required - Long  filed (Specified Checkout order for cancel amount)
         "deliveryId" => 790211112558, // required - Long - Id of the specified delivery.
-        "orderRowIds" => array(2), // required - Array - Ids of the delivered order rows that will be credited.
-    );
+        "orderRowIds" => [2], // required - Array - Ids of the delivered order rows that will be credited.
+    ];
     $response = $checkoutClient->creditOrderRows($data);
     print_r($response);
 } catch (\Svea\Checkout\Exception\SveaApiException $ex) {

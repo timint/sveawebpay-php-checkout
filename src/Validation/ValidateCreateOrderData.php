@@ -52,7 +52,7 @@ class ValidateCreateOrderData extends ValidationService
     {
         $this->mustBeArray($data, 'Order data');
 
-        $requiredFields = array('merchantsettings', 'cart', 'locale', 'currency', 'countrycode');
+        $requiredFields = ['merchantsettings', 'cart', 'locale', 'currency', 'countrycode'];
         foreach ($requiredFields as $field) {
             $this->mustBeSet($data, $field, $field);
             $this->mustNotBeEmpty($data[$field], $field);
@@ -69,7 +69,7 @@ class ValidateCreateOrderData extends ValidationService
         $this->mustBeArray($data['merchantsettings'], 'Merchant settings');
 
         $merchantData = $data['merchantsettings'];
-        $requiredFields = array('termsuri', 'checkouturi', 'confirmationuri', 'pushuri');
+        $requiredFields = ['termsuri', 'checkouturi', 'confirmationuri', 'pushuri'];
 
         foreach ($requiredFields as $field) {
             $this->mustBeSet($merchantData, $field, 'Merchant settings' . $field);

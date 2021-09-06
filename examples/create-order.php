@@ -55,15 +55,15 @@ try {
     /**
      * Example of creating the order and getting the response data
      */
-    $data = array(
+    $data = [
         "countryCode" => "SE",
         "currency" => "SEK",
         "locale" => "sv-SE",
         "clientOrderNumber" => rand(10000,30000000),
         "merchantData" => "Test string from merchant",
-        "cart" => array(
-            "items" => array(
-                array(
+        "cart" => [
+            "items" => [
+                [
                     "articleNumber" => "11",
                     "name" => "aa",
                     "quantity" => 200,
@@ -72,8 +72,8 @@ try {
                     "unit" => "st",
                     "temporaryReference" => "1",
                     "merchantData" => "Size: S"
-                ),
-                array(
+                ],
+                [
                     "articleNumber" => "22",
                     "name" => "bb",
                     "quantity" => 300,
@@ -82,28 +82,28 @@ try {
                     "unit" => "pcs",
                     "temporaryReference" => "2",
                     "merchantData" => null
-                )
-            )
-        ),
-        "presetValues" => array(
-            array(
+                ]
+            ]
+        ],
+        "presetValues" => [
+            [
                 "typeName" => "emailAddress",
                 "value" => "test@yourdomain.se",
                 "isReadonly" => false
-            ),
-            array(
+            ],
+            [
                 "typeName" => "postalCode",
                 "value" => "99999",
                 "isReadonly" => false
-            )
-        ),
-        "merchantSettings" => array(
+            ]
+        ],
+        "merchantSettings" => [
             "termsUri" => "http://localhost:51898/terms",
             "checkoutUri" => "http://localhost:51925/",
             "confirmationUri" => "http://localhost:51925/checkout/confirm",
             "pushUri" => "https://localhost:51925/push.php?svea_order_id={checkout.order.uri}",
-        )
-    );
+        ]
+    ];
 
     $response = $checkoutClient->create($data);
 

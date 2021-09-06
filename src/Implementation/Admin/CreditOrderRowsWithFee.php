@@ -50,7 +50,7 @@ class CreditOrderRowsWithFee extends AdminImplementationManager
      */
     public function prepareData($data)
     {
-        $requestData = array();
+        $requestData = [];
         
 		$requestData['orderRowIds'] = $data['orderrowids'];
 
@@ -64,7 +64,7 @@ class CreditOrderRowsWithFee extends AdminImplementationManager
 
         $orderId = $data['orderid'];
         $deliveryId = $data['deliveryid'];
-        $urlParams = array($orderId, $deliveryId);
+        $urlParams = [$orderId, $deliveryId];
 
         $this->requestModel = new Request();
         $this->requestModel->setPostMethod();

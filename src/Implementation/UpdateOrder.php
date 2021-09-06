@@ -33,7 +33,7 @@ class UpdateOrder extends ImplementationManager
      */
     public function prepareData($data)
     {
-        $cart = array();
+        $cart = [];
         $cart['cart'] = $data['cart'];
         if(isset($data['merchantdata'])) {
             $cart['merchantdata'] = $data['merchantdata'];

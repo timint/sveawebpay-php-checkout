@@ -22,19 +22,19 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
         parent::setUp();
         $this->validateReplaceOrderRows = new ValidateReplaceOrderRowsData();
 
-        $this->inputData = array(
+        $this->inputData = [
             "orderid" => 201,
-            'orderrows' => array(
-				array(
+            'orderrows' => [
+				[
 					"articlenumber" => "123456",
 					"name" => "Tomatoes",
 					"quantity" => 10,
 					"unitprice" => 600,
 					"discountpercent" => 1000,
 					"vatpercent" => 2500
-				)
-			)
-        );
+				]
+			]
+        ];
     }
 
     /**
@@ -44,7 +44,7 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
     public function testValidateWithoutOrderId()
     {
         unset($this->inputData['orderid']);
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
     }
 
     /**
@@ -54,7 +54,7 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
     public function testValidateWithOrderIdAsString()
     {
         $this->inputData['orderid'] = '204';
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
     }
 
     /**
@@ -64,7 +64,7 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
     public function testValidateWithEmptyOrderId()
     {
         $this->inputData['orderid'] = '';
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
     }
 
     /**
@@ -74,7 +74,7 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
     public function testValidateWithNullOrderId()
     {
         $this->inputData['orderid'] = null;
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
     }
 
     /**
@@ -84,7 +84,7 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
     public function testValidateWithOrderIdAsDecimal()
     {
         $this->inputData['orderid'] = 204.5;
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
     }
 
     /**
@@ -94,7 +94,7 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
     public function testValidateWithOrderIdAsIntAndWithoutOrderRows()
     {
         unset($this->inputData['orderrows']);
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
     }
 
     /**
@@ -104,7 +104,7 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
     public function testValidateWithOrderIdAsIntAndWithOrderRowsAsInt()
     {
         $this->inputData['orderrows'] = 1;
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
     }
 
     /**
@@ -113,12 +113,12 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
      */
     public function testValidateWithOrderIdAsIntAndWithOrderRowsAsEmptyArray()
     {
-        $this->inputData['orderrows'] = array();
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', array($this->inputData));
+        $this->inputData['orderrows'] = [];
+        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
     }
 
     public function testValidateWithOrderIdAsInteger()
     {
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
     }
 }

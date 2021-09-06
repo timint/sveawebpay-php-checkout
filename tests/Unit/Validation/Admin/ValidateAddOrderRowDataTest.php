@@ -22,17 +22,17 @@ class ValidateAddOrderRowDataTest extends TestCase
         parent::setUp();
         $this->validateAddOrderRow = new ValidateAddOrderRowData();
 
-        $this->inputData = array(
+        $this->inputData = [
             'orderid' => 204,
-            'orderrow' => array(
+            'orderrow' => [
                 'articlenumber' => 'prod-01',
                 'name'          => 'someprod',
                 'quantity'      => 300,
                 'unitprice'     => 5000,
                 'vatpercent'    => 0,
                 'unit'          => 'pc'
-            )
-        );
+            ]
+        ];
     }
 
     /**
@@ -42,7 +42,7 @@ class ValidateAddOrderRowDataTest extends TestCase
     public function testValidateWithoutOrderId()
     {
         unset($this->inputData['orderid']);
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -52,7 +52,7 @@ class ValidateAddOrderRowDataTest extends TestCase
     public function testValidateWithOrderIdAsString()
     {
         $this->inputData['orderid'] = '204';
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -62,7 +62,7 @@ class ValidateAddOrderRowDataTest extends TestCase
     public function testValidateWithEmptyOrderId()
     {
         $this->inputData['orderid'] = '';
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -72,7 +72,7 @@ class ValidateAddOrderRowDataTest extends TestCase
     public function testValidateWithNullOrderId()
     {
         $this->inputData['orderid'] = null;
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -82,12 +82,12 @@ class ValidateAddOrderRowDataTest extends TestCase
     public function testValidateWithOrderIdAsDecimal()
     {
         $this->inputData['orderid'] = 204.5;
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     public function testValidateWithOrderIdAsInteger()
     {
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -97,7 +97,7 @@ class ValidateAddOrderRowDataTest extends TestCase
     public function testValidateWithoutOrderRow()
     {
         unset($this->inputData['orderrow']);
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -107,7 +107,7 @@ class ValidateAddOrderRowDataTest extends TestCase
     public function testValidateWithOrderRowAsString()
     {
         $this->inputData['orderrow'] = '204';
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -117,7 +117,7 @@ class ValidateAddOrderRowDataTest extends TestCase
     public function testValidateWithEmptyOrderRow()
     {
         $this->inputData['orderrow'] = '';
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -127,11 +127,11 @@ class ValidateAddOrderRowDataTest extends TestCase
     public function testValidateOrderRowWithNullAmount()
     {
         $this->inputData['orderrow'] = null;
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 
     public function testValidateWithOrderRowAsArray()
     {
-        $this->invokeMethod($this->validateAddOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateAddOrderRow, 'validate', [$this->inputData]);
     }
 }

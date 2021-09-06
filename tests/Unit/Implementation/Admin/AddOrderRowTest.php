@@ -32,17 +32,17 @@ class AddOrderRowTest extends TestCase
     {
         $orderId = 201;
 
-        $inputData = array(
+        $inputData = [
             'orderid' => $orderId,
-            'orderrow' => array(
+            'orderrow' => [
                 "articlenumber" => "prod-01",
                 "name" => "someProd",
                 "quantity" => 300,
                 "unitprice" => 5000,
                 "vatpercent" => 0,
                 "unit" => "pc"
-            )
-        );
+            ]
+        ];
         $this->addOrderRow->prepareData($inputData);
 
         $requestModel = $this->addOrderRow->getRequestModel();

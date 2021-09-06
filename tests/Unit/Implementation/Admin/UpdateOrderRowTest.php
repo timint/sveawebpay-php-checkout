@@ -33,13 +33,13 @@ class UpdateOrderRowTest extends TestCase
         $orderId = 201;
         $orderRowId = 1;
 
-        $inputData = array(
+        $inputData = [
             'orderid' => $orderId,
             'orderrowid' => $orderRowId,
-            'orderrow' => array(
+            'orderrow' => [
                 'articlenumber' => '1234'
-            )
-        );
+            ]
+        ];
         $this->updateOrderRow->prepareData($inputData);
 
         $requestModel = $this->updateOrderRow->getRequestModel();

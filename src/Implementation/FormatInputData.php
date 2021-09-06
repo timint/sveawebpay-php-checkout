@@ -21,7 +21,7 @@ final class FormatInputData
 
     private static function lowerArrayKeys(array $input)
     {
-        $return = array();
+        $return = [];
 
         foreach ($input as $key => $value) {
             $key = strtolower($key);

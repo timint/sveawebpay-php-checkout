@@ -94,8 +94,7 @@ class ResponseHandlerTest extends TestCase
         $responseHandler = new ResponseHandler($content, $httpCode);
         $responseHandler->setHeader();
 
-        $res = array
-        (
+        $res = [
             'http_code' => 'HTTP/1.1 201 Created',
             'Cache-Control' => 'no-cache',
             'Pragma' => 'no-cache',
@@ -106,7 +105,7 @@ class ResponseHandlerTest extends TestCase
             'X-AspNet-Version' => '4.0.30319',
             'X-Powered-By' => 'ASP.NET',
             'Date' => 'Wed, 27 Apr 2016 09:42:19 GMT'
-        );
+        ];
 
 
         $this->assertEquals($res, $responseHandler->getHeader());
@@ -155,9 +154,9 @@ class ResponseHandlerTest extends TestCase
 
         $responseHandler = new ResponseHandler($content, $httpCode);
 
-        $expectedValue = array(
+        $expectedValue = [
             'HeaderLocation' => $locationUrl
-        );
+        ];
         $expectedValue = array_merge($expectedValue, json_decode($body, true));
 
         $this->assertEquals($expectedValue, $responseHandler->getResponse());
@@ -172,9 +171,9 @@ class ResponseHandlerTest extends TestCase
 
         $responseHandler = new ResponseHandler($content, $httpCode);
 
-        $expectedValue = array(
+        $expectedValue = [
             'HeaderLocation' => $locationUrl
-        );
+        ];
 
         $this->assertEquals($expectedValue, $responseHandler->getResponse());
     }

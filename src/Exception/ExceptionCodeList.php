@@ -22,14 +22,14 @@ class ExceptionCodeList
     {
         $exceptionCode = intval($exceptionCode);
 
-        $exceptionMessageList = array(
+        $exceptionMessageList = [
             self::COMMUNICATION_ERROR => 'Api Client Error',
             self::MISSING_MERCHANT_ID => 'Missing Merchant Id',
             self::MISSING_SHARED_SECRET => 'Missing Shared Secret',
             self::MISSING_API_BASE_URL => 'Missing API Base URL',
             self::INCORRECT_API_BASE_URL => 'Incorrect API Base URL',
             self::INPUT_VALIDATION_ERROR => 'Input Validation Error'
-		);
+		];
 
         if (isset($exceptionMessageList[$exceptionCode])) {
             return $exceptionMessageList[$exceptionCode];

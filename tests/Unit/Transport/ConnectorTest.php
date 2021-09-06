@@ -101,7 +101,7 @@ class ConnectorTest extends TestCase
         $responseContent = $this->apiResponse;
         $httpCode = 201;
         $responseHandler = $this->getMockBuilder('\Svea\Checkout\Transport\ResponseHandler')
-            ->setConstructorArgs(array($responseContent, $httpCode))
+            ->setConstructorArgs([$responseContent, $httpCode])
             ->getMock();
 
         $responseHandler->expects($this->once())
@@ -170,7 +170,7 @@ class ConnectorTest extends TestCase
         $expectedAuthToken .= 'MzE2MWI0MzEyNzNiZWI1ZDQ0ODFhNTZmM2I0YTk1OTI0OTI0YjAw';
 
         $connector = new Connector($this->apiClientMock, $this->merchantId, $this->sharedSecret, $this->apiUrl);
-        $this->invokeMethod($connector, 'createAuthorizationToken', array($this->requestModel));
+        $this->invokeMethod($connector, 'createAuthorizationToken', [$this->requestModel]);
 
         $this->assertEquals($expectedAuthToken, $this->requestModel->getAuthorizationToken());
     }

@@ -45,9 +45,9 @@ try {
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutClient($conn);
 
-    $data = array(
+    $data = [
         'orderId' => 251147
-    );
+    ];
     $response = $checkoutClient->get($data);
     echo '<pre>' . print_r($response, true) . '</pre>';
 

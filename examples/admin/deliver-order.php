@@ -42,11 +42,11 @@ try {
      */
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutAdminClient($conn);
-    $data = array(
+    $data = [
         "orderId" => 2572095,
         /* To deliver whole order just send orderRowIds as empty array */
-        "orderRowIds" => array()
-    );
+        "orderRowIds" => []
+    ];
     $response = $checkoutClient->deliverOrder($data);
     print_r($response);
 } catch (\Svea\Checkout\Exception\SveaApiException $ex) {

@@ -43,10 +43,10 @@ try {
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutAdminClient($conn);
 
-    $data = array(
+    $data = [
         "orderId" => 204,
         "cancelledAmount" => 5000
-    );
+    ];
 
     $response = $checkoutClient->cancelOrderAmount($data);
     if ($response === '') {

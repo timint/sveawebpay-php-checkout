@@ -30,11 +30,11 @@ class CreditOrderRowsTest extends TestCase
 
     public function testPrepareData()
     {
-        $inputData = array(
+        $inputData = [
             'orderid' => 201,
             'deliveryid' => 1,
-            'orderrowids' => array(1, 2)
-        );
+            'orderrowids' => [1, 2]
+        ];
         $this->creditOrderRows->prepareData($inputData);
 
         $requestModel = $this->creditOrderRows->getRequestModel();

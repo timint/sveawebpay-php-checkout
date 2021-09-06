@@ -21,7 +21,7 @@ class ResponseHandler
      * 303 - See Other
      * @var array
      */
-    private $httpSuccessfulCodes = array(200, 201, 202, 204, 302, 303);
+    private $httpSuccessfulCodes = [200, 201, 202, 204, 302, 303];
 
     /**
      * Svea Checkout Api response content.
@@ -139,7 +139,7 @@ class ResponseHandler
      */
     public function getResponse()
     {
-        $returnData = array();
+        $returnData = [];
 
         /**
          * Fix for 204 No Content - http response
@@ -175,7 +175,7 @@ class ResponseHandler
      */
     public function setHeader()
     {
-        $headers = array();
+        $headers = [];
 
         /**
          * Split the string on "double" new line.

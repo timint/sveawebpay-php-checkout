@@ -42,16 +42,16 @@ try {
     $conn = \Svea\Checkout\Transport\Connector::init($checkoutMerchantId, $checkoutSecret, $baseUrl);
     $checkoutClient = new \Svea\Checkout\CheckoutAdminClient($conn);
 
-    $data = array(
+    $data = [
         "orderId" => 51955, // required - Long  Id of the specified order
         "orderRowId" => 3, // required - Long - Id of the specified order rows that will be updated.
-        "orderRow" => array(
+        "orderRow" => [
             "articleNumber" => "prod11",
             "name" => "iPhone",
             "quantity" => 400, // minor unit
             "discountPercent" => 400, // minor unit
-        )
-    );
+        ]
+    ];
 
     $response = $checkoutClient->updateOrderRow($data);
     print_r($response);

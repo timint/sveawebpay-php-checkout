@@ -22,14 +22,14 @@ class ValidateCreditOrderRowsDataTest extends TestCase
         parent::setUp();
         $this->validateCreditOrderRow = new ValidateCreditOrderRowsData();
 
-        $this->inputData = array(
+        $this->inputData = [
             "orderid" => 201,
             "deliveryid" => 1,
-            "orderrowids" => array(3),
-            "newcreditrow" => array(
+            "orderrowids" => [3],
+            "newcreditrow" => [
                 'unitPrice' => 5000
-            )
-        );
+            ]
+        ];
     }
 
     /**
@@ -39,7 +39,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithoutOrderId()
     {
         unset($this->inputData['orderid']);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -49,7 +49,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithOrderIdAsString()
     {
         $this->inputData['orderid'] = '204';
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -59,7 +59,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithEmptyOrderId()
     {
         $this->inputData['orderid'] = '';
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -69,7 +69,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithNullOrderId()
     {
         $this->inputData['orderid'] = null;
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -79,21 +79,21 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithOrderIdAsDecimal()
     {
         $this->inputData['orderid'] = 204.5;
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     public function testValidateValidCreditOrderRowIds()
     {
         unset($this->inputData['newcreditrow']);
         $this->validateCreditOrderRow->setIsNewCreditRow(false);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     public function testValidateNewCreditRowWithoutOrderRowIds()
     {
         unset($this->inputData['orderrowids']);
         $this->validateCreditOrderRow->setIsNewCreditRow(true);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -103,7 +103,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithoutDeliveryId()
     {
         unset($this->inputData['deliveryid']);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -113,7 +113,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithDeliveryIdAsString()
     {
         $this->inputData['deliveryid'] = '204';
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -123,7 +123,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithEmptyDeliveryId()
     {
         $this->inputData['deliveryid'] = '';
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -133,7 +133,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithNullDeliveryId()
     {
         $this->inputData['deliveryid'] = null;
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -143,7 +143,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateWithDeliveryIdAsDecimal()
     {
         $this->inputData['deliveryid'] = 204.5;
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -155,7 +155,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
         $this->inputData['orderrowids'] = '204';
         unset($this->inputData['newcreditrow']);
         $this->validateCreditOrderRow->setIsNewCreditRow(false);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -167,14 +167,14 @@ class ValidateCreditOrderRowsDataTest extends TestCase
         $this->inputData['orderrowids'] = '';
         unset($this->inputData['newcreditrow']);
         $this->validateCreditOrderRow->setIsNewCreditRow(false);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     public function testValidateNewCreditRowWithValidData()
     {
         unset($this->inputData['orderrowids']);
         $this->validateCreditOrderRow->setIsNewCreditRow(true);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -186,7 +186,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
         $this->inputData['orderrowids'] = 204.5;
         unset($this->inputData['newcreditrow']);
         $this->validateCreditOrderRow->setIsNewCreditRow(false);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -195,10 +195,10 @@ class ValidateCreditOrderRowsDataTest extends TestCase
      */
     public function testValidateCreditOrderRowIdsWithOrderRowIdAsEmptyArray()
     {
-        $this->inputData['orderrowids'] = array();
+        $this->inputData['orderrowids'] = [];
         unset($this->inputData['newcreditrow']);
         $this->validateCreditOrderRow->setIsNewCreditRow(false);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -207,10 +207,10 @@ class ValidateCreditOrderRowsDataTest extends TestCase
      */
     public function testValidateCreditOrderRowIdsWithOrderRowIdAsString()
     {
-        $this->inputData['orderrowids'] = array('1');
+        $this->inputData['orderrowids'] = ['1'];
         unset($this->inputData['newcreditrow']);
         $this->validateCreditOrderRow->setIsNewCreditRow(false);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -219,10 +219,10 @@ class ValidateCreditOrderRowsDataTest extends TestCase
      */
     public function testValidateCreditOrderRowIdsWithOrderRowIdAsDecimal()
     {
-        $this->inputData['orderrowids'] = array(1.1);
+        $this->inputData['orderrowids'] = [1.1];
         unset($this->inputData['newcreditrow']);
         $this->validateCreditOrderRow->setIsNewCreditRow(false);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -231,10 +231,10 @@ class ValidateCreditOrderRowsDataTest extends TestCase
      */
     public function testValidateCreditOrderRowIdsWithEmptyOrderRowId()
     {
-        $this->inputData['orderrowids'] = array('');
+        $this->inputData['orderrowids'] = [''];
         unset($this->inputData['newcreditrow']);
         $this->validateCreditOrderRow->setIsNewCreditRow(false);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -245,7 +245,7 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     {
         unset($this->inputData['orderrowids']);
         unset($this->inputData['newcreditrow']);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
     /**
@@ -255,9 +255,9 @@ class ValidateCreditOrderRowsDataTest extends TestCase
     public function testValidateNewCreditRowWithoutOrderRowIdsAndEmptyNewCreditRow()
     {
         unset($this->inputData['orderrowids']);
-        $this->inputData['newcreditrow'] = array();
+        $this->inputData['newcreditrow'] = [];
         $this->validateCreditOrderRow->setIsNewCreditRow(true);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 
 	/**
@@ -266,13 +266,13 @@ class ValidateCreditOrderRowsDataTest extends TestCase
      */
     public function testValidateWithEmptyRowCreditingOptions()
     {
-        $this->inputData['rowcreditingoptions'] = array();
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->inputData['rowcreditingoptions'] = [];
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 	
     public function testValidateWithoutRowCreditingOptions()
     {
         unset($this->inputData['rowcreditingoptions']);
-        $this->invokeMethod($this->validateCreditOrderRow, 'validate', array($this->inputData));
+        $this->invokeMethod($this->validateCreditOrderRow, 'validate', [$this->inputData]);
     }
 }

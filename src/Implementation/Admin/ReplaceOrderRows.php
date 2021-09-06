@@ -50,12 +50,12 @@ class ReplaceOrderRows extends AdminImplementationManager
      */
     public function prepareData($data)
     {
-        $requestData = array();
+        $requestData = [];
 
 		$requestData['orderRows'] = $data['orderrows'];
 
         $orderId = $data['orderid'];
-        $urlParams = array($orderId);
+        $urlParams = [$orderId];
 
         $this->requestModel = new Request();
         $this->requestModel->setPutMethod();
