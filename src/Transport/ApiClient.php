@@ -45,11 +45,12 @@ class ApiClient
 			throw new Exception('Unknown request method ('. $request->getMethod() .')');
 		}
 
-		$headers = [];
-		$headers[] = 'Content-type: application/json';
-		$headers[] = 'Authorization: Svea ' . $request->getAuthorizationToken();
-		$headers[] = 'Timestamp: ' . $request->getTimestamp();
-		$headers[] = 'Expect:';
+		$headers = [
+			'Content-type: application/json; charset=utf-8',
+			'Authorization: Svea ' . $request->getAuthorizationToken(),
+			'Timestamp: ' . $request->getTimestamp(),
+			'Expect:',
+		];
 
 		$this->httpClient->init();
 		$this->httpClient->setOptions([
