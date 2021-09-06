@@ -7,24 +7,24 @@ use Svea\Checkout\Validation\Admin\ValidateReplaceOrderRowsData;
 
 class ValidateReplaceOrderRowsDataTest extends TestCase
 {
-    /**
-     * @var ValidateReplaceOrderRowsData $validateUpdateOrderData
-     */
-    private $validateReplaceOrderRows;
+	/**
+	 * @var ValidateReplaceOrderRowsData $validateUpdateOrderData
+	 */
+	private $validateReplaceOrderRows;
 
-    /**
-     * @var mixed $inputData
-     */
-    private $inputData;
+	/**
+	 * @var mixed $inputData
+	 */
+	private $inputData;
 
-    public function setUp()
-    {
-        parent::setUp();
-        $this->validateReplaceOrderRows = new ValidateReplaceOrderRowsData();
+	public function setUp()
+	{
+		parent::setUp();
+		$this->validateReplaceOrderRows = new ValidateReplaceOrderRowsData();
 
-        $this->inputData = [
-            "orderid" => 201,
-            'orderrows' => [
+		$this->inputData = [
+			"orderid" => 201,
+			'orderrows' => [
 				[
 					"articlenumber" => "123456",
 					"name" => "Tomatoes",
@@ -34,91 +34,91 @@ class ValidateReplaceOrderRowsDataTest extends TestCase
 					"vatpercent" => 2500
 				]
 			]
-        ];
-    }
+		];
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithoutOrderId()
-    {
-        unset($this->inputData['orderid']);
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithoutOrderId()
+	{
+		unset($this->inputData['orderid']);
+		$this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithOrderIdAsString()
-    {
-        $this->inputData['orderid'] = '204';
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithOrderIdAsString()
+	{
+		$this->inputData['orderid'] = '204';
+		$this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithEmptyOrderId()
-    {
-        $this->inputData['orderid'] = '';
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithEmptyOrderId()
+	{
+		$this->inputData['orderid'] = '';
+		$this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithNullOrderId()
-    {
-        $this->inputData['orderid'] = null;
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithNullOrderId()
+	{
+		$this->inputData['orderid'] = null;
+		$this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithOrderIdAsDecimal()
-    {
-        $this->inputData['orderid'] = 204.5;
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithOrderIdAsDecimal()
+	{
+		$this->inputData['orderid'] = 204.5;
+		$this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithOrderIdAsIntAndWithoutOrderRows()
-    {
-        unset($this->inputData['orderrows']);
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithOrderIdAsIntAndWithoutOrderRows()
+	{
+		unset($this->inputData['orderrows']);
+		$this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithOrderIdAsIntAndWithOrderRowsAsInt()
-    {
-        $this->inputData['orderrows'] = 1;
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithOrderIdAsIntAndWithOrderRowsAsInt()
+	{
+		$this->inputData['orderrows'] = 1;
+		$this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithOrderIdAsIntAndWithOrderRowsAsEmptyArray()
-    {
-        $this->inputData['orderrows'] = [];
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithOrderIdAsIntAndWithOrderRowsAsEmptyArray()
+	{
+		$this->inputData['orderrows'] = [];
+		$this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
+	}
 
-    public function testValidateWithOrderIdAsInteger()
-    {
-        $this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
-    }
+	public function testValidateWithOrderIdAsInteger()
+	{
+		$this->invokeMethod($this->validateReplaceOrderRows, 'validate', [$this->inputData]);
+	}
 }

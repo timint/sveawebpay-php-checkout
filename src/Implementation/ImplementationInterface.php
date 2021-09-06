@@ -10,14 +10,14 @@ use Svea\Checkout\Transport\ResponseHandler;
  */
 interface ImplementationInterface
 {
-    /**
-     * Template pattern for all implementations
-     * @param array $data
-     */
-    public function execute($data);
+	/**
+	 * Template pattern for all implementations
+	 * @param array $data
+	 */
+	public function execute($data);
 
-    /**
-     * @return ResponseHandler
-     */
-    public function getResponseHandler();
+	/**
+	 * @return ResponseHandler
+	 */
+	public function getResponseHandler();
 }

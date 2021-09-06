@@ -9,62 +9,62 @@ use Svea\Checkout\Validation\Admin\ValidateCreditOrderRowsData;
 
 class CreditOrderRowsTest extends TestCase
 {
-    /**
-     * @var CreditOrderRows
-     */
-    protected $creditOrderRows;
+	/**
+	 * @var CreditOrderRows
+	 */
+	protected $creditOrderRows;
 
-    /**
-     * @var ValidateCreditOrderRowsData|\PHPUnit_Framework_MockObject_MockObject $validatorMock
-     */
-    protected $validatorMock;
+	/**
+	 * @var ValidateCreditOrderRowsData|\PHPUnit_Framework_MockObject_MockObject $validatorMock
+	 */
+	protected $validatorMock;
 
-    public function setUp()
-    {
-        parent::setUp();
+	public function setUp()
+	{
+		parent::setUp();
 
-        $this->validatorMock = $this->getMockBuilder('\Svea\Checkout\Validation\Admin\ValidateCreditOrderRowsData')
-            ->getMock();
-        $this->creditOrderRows = new CreditOrderRows($this->connectorMock, $this->validatorMock);
-    }
+		$this->validatorMock = $this->getMockBuilder('\Svea\Checkout\Validation\Admin\ValidateCreditOrderRowsData')
+			->getMock();
+		$this->creditOrderRows = new CreditOrderRows($this->connectorMock, $this->validatorMock);
+	}
 
-    public function testPrepareData()
-    {
-        $inputData = [
-            'orderid' => 201,
-            'deliveryid' => 1,
-            'orderrowids' => [1, 2]
-        ];
-        $this->creditOrderRows->prepareData($inputData);
+	public function testPrepareData()
+	{
+		$inputData = [
+			'orderid' => 201,
+			'deliveryid' => 1,
+			'orderrowids' => [1, 2]
+		];
+		$this->creditOrderRows->prepareData($inputData);
 
-        $requestModel = $this->creditOrderRows->getRequestModel();
-        $requestBodyData = json_decode($requestModel->getBody(), true);
+		$requestModel = $this->creditOrderRows->getRequestModel();
+		$requestBodyData = json_decode($requestModel->getBody(), true);
 
-        $this->assertEquals(Request::METHOD_POST, $requestModel->getMethod());
-        $this->assertEquals($inputData['orderrowids'], $requestBodyData['orderRowIds']);
-    }
+		$this->assertEquals(Request::METHOD_POST, $requestModel->getMethod());
+		$this->assertEquals($inputData['orderrowids'], $requestBodyData['orderRowIds']);
+	}
 
-    public function testInvoke()
-    {
-        $fakeResponse = 'Test response!!!';
-        $this->connectorMock->expects($this->once())
-            ->method('sendRequest')
-            ->will($this->returnValue($fakeResponse));
+	public function testInvoke()
+	{
+		$fakeResponse = 'Test response!!!';
+		$this->connectorMock->expects($this->once())
+			->method('sendRequest')
+			->will($this->returnValue($fakeResponse));
 
-        $createOrder = $this->creditOrderRows;
-        $createOrder->setRequestModel($this->requestModel);
-        $createOrder->invoke();
+		$createOrder = $this->creditOrderRows;
+		$createOrder->setRequestModel($this->requestModel);
+		$createOrder->invoke();
 
-        $this->assertEquals($fakeResponse, $createOrder->getResponseHandler());
-    }
+		$this->assertEquals($fakeResponse, $createOrder->getResponseHandler());
+	}
 
-    public function testValidate()
-    {
-        $this->validatorMock->expects($this->once())
-            ->method('validate');
+	public function testValidate()
+	{
+		$this->validatorMock->expects($this->once())
+			->method('validate');
 
-        $getOrder = $this->creditOrderRows;
+		$getOrder = $this->creditOrderRows;
 
-        $getOrder->validateData($this->inputCreateData);
-    }
+		$getOrder->validateData($this->inputCreateData);
+	}
 }

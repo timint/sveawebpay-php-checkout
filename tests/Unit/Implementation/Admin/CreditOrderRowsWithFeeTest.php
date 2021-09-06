@@ -8,41 +8,41 @@ use Svea\Checkout\Tests\Unit\TestCase;
 
 class CreditOrderRowsWithFeeTest extends TestCase
 {
-    /**
-     * @var CreditOrderRowsWithFee
-     */
-    protected $creditOrderRowsWithFee;
+	/**
+	 * @var CreditOrderRowsWithFee
+	 */
+	protected $creditOrderRowsWithFee;
 
-    /**
-     * @var ValidateCreditOrderRowsWithFee|\PHPUnit_Framework_MockObject_MockObject $validatorMock
-     */
-    protected $validatorMock;
+	/**
+	 * @var ValidateCreditOrderRowsWithFee|\PHPUnit_Framework_MockObject_MockObject $validatorMock
+	 */
+	protected $validatorMock;
 
 	/**
 	 * Setup the test
 	 *
 	 * @return void
 	 */
-    public function setUp()
-    {
-        parent::setUp();
+	public function setUp()
+	{
+		parent::setUp();
 
-        $this->validatorMock = $this->getMockBuilder('\Svea\Checkout\Validation\Admin\ValidateCreditOrderRowsWithFeeData')
-            ->getMock();
-        $this->creditOrderRowsWithFee = new CreditOrderRowsWithFee($this->connectorMock, $this->validatorMock);
-    }
+		$this->validatorMock = $this->getMockBuilder('\Svea\Checkout\Validation\Admin\ValidateCreditOrderRowsWithFeeData')
+			->getMock();
+		$this->creditOrderRowsWithFee = new CreditOrderRowsWithFee($this->connectorMock, $this->validatorMock);
+	}
 
 	/**
 	 * Test the prepare data method
 	 *
 	 * @return void
 	 */
-    public function testPrepareData()
-    {
-        $inputData = [
-            'orderid' => 201,
-            'deliveryid' => 1,
-            'orderrowids' => [1, 2],
+	public function testPrepareData()
+	{
+		$inputData = [
+			'orderid' => 201,
+			'deliveryid' => 1,
+			'orderrowids' => [1, 2],
 			'fee' => [
 				'articlenumber' => '123456',
 				'name' => 'Tomatoes',
@@ -57,49 +57,49 @@ class CreditOrderRowsWithFeeTest extends TestCase
 					'quantity' => 1,
 				]
 			]
-        ];
-        $this->creditOrderRowsWithFee->prepareData($inputData);
+		];
+		$this->creditOrderRowsWithFee->prepareData($inputData);
 
-        $requestModel = $this->creditOrderRowsWithFee->getRequestModel();
-        $requestBodyData = json_decode($requestModel->getBody(), true);
+		$requestModel = $this->creditOrderRowsWithFee->getRequestModel();
+		$requestBodyData = json_decode($requestModel->getBody(), true);
 
-        $this->assertEquals(Request::METHOD_POST, $requestModel->getMethod());
-        $this->assertEquals($inputData['orderrowids'], $requestBodyData['orderRowIds']);
+		$this->assertEquals(Request::METHOD_POST, $requestModel->getMethod());
+		$this->assertEquals($inputData['orderrowids'], $requestBodyData['orderRowIds']);
 		$this->assertEquals($inputData['fee'], $requestBodyData['fee']);
 		$this->assertEquals($inputData['rowcreditingoptions'], $requestBodyData['rowCreditingOptions']);
-    }
+	}
 
 	/**
 	 * Test the invoke method
 	 *
 	 * @return void
 	 */
-    public function testInvoke()
-    {
-        $fakeResponse = 'Test response!!!';
-        $this->connectorMock->expects($this->once())
-            ->method('sendRequest')
-            ->will($this->returnValue($fakeResponse));
+	public function testInvoke()
+	{
+		$fakeResponse = 'Test response!!!';
+		$this->connectorMock->expects($this->once())
+			->method('sendRequest')
+			->will($this->returnValue($fakeResponse));
 
-        $createOrder = $this->creditOrderRowsWithFee;
-        $createOrder->setRequestModel($this->requestModel);
-        $createOrder->invoke();
+		$createOrder = $this->creditOrderRowsWithFee;
+		$createOrder->setRequestModel($this->requestModel);
+		$createOrder->invoke();
 
-        $this->assertEquals($fakeResponse, $createOrder->getResponseHandler());
-    }
+		$this->assertEquals($fakeResponse, $createOrder->getResponseHandler());
+	}
 
 	/**
 	 * Test the validate method
 	 *
 	 * @return void
 	 */
-    public function testValidate()
-    {
-        $this->validatorMock->expects($this->once())
-            ->method('validate');
+	public function testValidate()
+	{
+		$this->validatorMock->expects($this->once())
+			->method('validate');
 
-        $getOrder = $this->creditOrderRowsWithFee;
+		$getOrder = $this->creditOrderRowsWithFee;
 
-        $getOrder->validateData($this->inputCreateData);
-    }
+		$getOrder->validateData($this->inputCreateData);
+	}
 }

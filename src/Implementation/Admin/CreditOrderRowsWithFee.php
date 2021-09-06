@@ -8,50 +8,50 @@ use Svea\Checkout\Validation\ValidationService;
 
 class CreditOrderRowsWithFee extends AdminImplementationManager
 {
-    protected $apiUrl = '/api/v1/orders/%s/deliveries/%s/credits/CreditWithFee';
+	protected $apiUrl = '/api/v1/orders/%s/deliveries/%s/credits/CreditWithFee';
 
-    /**
-     * @var bool $isNewCreditRow
-     */
-    protected $isNewCreditRow;
+	/**
+	 * @var bool $isNewCreditRow
+	 */
+	protected $isNewCreditRow;
 
-    /**
-     * Request body - JSON
-     *
-     * @var Request $requestModel
-     */
-    private $requestModel;
+	/**
+	 * Request body - JSON
+	 *
+	 * @var Request $requestModel
+	 */
+	private $requestModel;
 
-    /**
-     * CreditOrderRows constructor.
-     * @param Connector $connector
-     * @param ValidationService $validationService
-     * @param bool $isNewCreditRow
-     */
-    public function __construct(Connector $connector, ValidationService $validationService)
-    {
-        parent::__construct($connector, $validationService);
-    }
+	/**
+	 * CreditOrderRows constructor.
+	 * @param Connector $connector
+	 * @param ValidationService $validationService
+	 * @param bool $isNewCreditRow
+	 */
+	public function __construct(Connector $connector, ValidationService $validationService)
+	{
+		parent::__construct($connector, $validationService);
+	}
 
-    /**
-     * Input data validation
-     * @param array $data Input data to Svea Checkout Library
-     */
-    public function validateData($data)
-    {
-        $validator = $this->validator;
-        $validator->validate($data);
-    }
+	/**
+	 * Input data validation
+	 * @param array $data Input data to Svea Checkout Library
+	 */
+	public function validateData($data)
+	{
+		$validator = $this->validator;
+		$validator->validate($data);
+	}
 
-    /**
-     * Prepare date for request
-     *
-     * @param array $data
-     */
-    public function prepareData($data)
-    {
-        $requestData = [];
-        
+	/**
+	 * Prepare date for request
+	 *
+	 * @param array $data
+	 */
+	public function prepareData($data)
+	{
+		$requestData = [];
+		
 		$requestData['orderRowIds'] = $data['orderrowids'];
 
 		if (!empty($data['fee'])) {
@@ -62,45 +62,45 @@ class CreditOrderRowsWithFee extends AdminImplementationManager
 			$requestData['rowCreditingOptions'] = $data['rowcreditingoptions'];
 		}
 
-        $orderId = $data['orderid'];
-        $deliveryId = $data['deliveryid'];
-        $urlParams = [$orderId, $deliveryId];
+		$orderId = $data['orderid'];
+		$deliveryId = $data['deliveryid'];
+		$urlParams = [$orderId, $deliveryId];
 
-        $this->requestModel = new Request();
-        $this->requestModel->setPostMethod();
-        $this->requestModel->setBody(json_encode($requestData));
-        $this->requestModel->setApiUrl($this->prepareUrl($urlParams));
-    }
+		$this->requestModel = new Request();
+		$this->requestModel->setPostMethod();
+		$this->requestModel->setBody(json_encode($requestData));
+		$this->requestModel->setApiUrl($this->prepareUrl($urlParams));
+	}
 
-    /**
-     * Invoke Api call
+	/**
+	 * Invoke Api call
 	 * 
 	 * @return void
-     */
-    public function invoke()
-    {
-        $this->responseHandler = $this->connector->sendRequest($this->requestModel);
-    }
+	 */
+	public function invoke()
+	{
+		$this->responseHandler = $this->connector->sendRequest($this->requestModel);
+	}
 
-    /**
+	/**
 	 * Get the request model
 	 * 
-     * @return Request
-     */
-    public function getRequestModel()
-    {
-        return $this->requestModel;
-    }
+	 * @return Request
+	 */
+	public function getRequestModel()
+	{
+		return $this->requestModel;
+	}
 
-    /**
+	/**
 	 * Set the request model
 	 * 
-     * @param Request $requestModel
+	 * @param Request $requestModel
 	 * 
 	 * @return void
-     */
-    public function setRequestModel($requestModel)
-    {
-        $this->requestModel = $requestModel;
-    }
+	 */
+	public function setRequestModel($requestModel)
+	{
+		$this->requestModel = $requestModel;
+	}
 }

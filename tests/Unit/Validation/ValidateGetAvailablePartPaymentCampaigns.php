@@ -7,39 +7,39 @@ use Svea\Checkout\Validation\ValidateGetAvailablePartPaymentCampaignsData;
 
 class ValidateGetAvailablePartPaymentCampaigns extends TestCase
 {
-    /**
-     * @var ValidateGetAvailablePartPaymentCampaignsData $validateGetAvailablePartPaymentCampaignsData
-     */
-    private $validateGetAvailablePartPaymentCampaignsData;
+	/**
+	 * @var ValidateGetAvailablePartPaymentCampaignsData $validateGetAvailablePartPaymentCampaignsData
+	 */
+	private $validateGetAvailablePartPaymentCampaignsData;
 
-    public function setUp()
-    {
-        parent::setUp();
-        $this->validateGetAvailablePartPaymentCampaignsData = new ValidateGetAvailablePartPaymentCampaignsData();
-    }
+	public function setUp()
+	{
+		parent::setUp();
+		$this->validateGetAvailablePartPaymentCampaignsData = new ValidateGetAvailablePartPaymentCampaignsData();
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithEmptyArray()
-    {
-        unset($this->inputGetAvailablePartPaymentCampaignsData);
-        $this->invokeMethod($this->validateGetAvailablePartPaymentCampaignsData, 'validate', [$this->inputUpdateData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithEmptyArray()
+	{
+		unset($this->inputGetAvailablePartPaymentCampaignsData);
+		$this->invokeMethod($this->validateGetAvailablePartPaymentCampaignsData, 'validate', [$this->inputUpdateData]);
+	}
 
-    /**
-     * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
-     * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
-     */
-    public function testValidateWithNonBooleanType()
-    {
-        $this->inputGetAvailablePartPaymentCampaignsData['iscompany'] = "true";
-        $this->invokeMethod($this->validateGetAvailablePartPaymentCampaignsData, 'validate', [$this->inputUpdateData]);
-    }
+	/**
+	 * @expectedException \Svea\Checkout\Exception\SveaInputValidationException
+	 * @expectedExceptionCode Svea\Checkout\Exception\ExceptionCodeList::INPUT_VALIDATION_ERROR
+	 */
+	public function testValidateWithNonBooleanType()
+	{
+		$this->inputGetAvailablePartPaymentCampaignsData['iscompany'] = "true";
+		$this->invokeMethod($this->validateGetAvailablePartPaymentCampaignsData, 'validate', [$this->inputUpdateData]);
+	}
 
-    public function testValidateWithValidData()
-    {
-        $this->validateGetAvailablePartPaymentCampaignsData->validate($this->inputGetAvailablePartPaymentCampaignsData);
-    }
+	public function testValidateWithValidData()
+	{
+		$this->validateGetAvailablePartPaymentCampaignsData->validate($this->inputGetAvailablePartPaymentCampaignsData);
+	}
 }

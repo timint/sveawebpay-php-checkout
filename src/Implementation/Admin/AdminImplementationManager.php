@@ -9,30 +9,30 @@ use Svea\Checkout\Implementation\ImplementationManager;
 
 abstract class AdminImplementationManager extends ImplementationManager
 {
-    public function __construct(Connector $connector, ValidationService $validationService)
-    {
-        parent::__construct($connector, $validationService);
-    }
+	public function __construct(Connector $connector, ValidationService $validationService)
+	{
+		parent::__construct($connector, $validationService);
+	}
 
-    /**
-     * Return Api url string
-     *
-     * @param $data mixed
-     * @return string
-     * @throws Exception
-     */
-    protected function prepareUrl($data)
-    {
-        if (!is_array($data)) {
-            $data = [$data];
-        }
+	/**
+	 * Return Api url string
+	 *
+	 * @param $data mixed
+	 * @return string
+	 * @throws Exception
+	 */
+	protected function prepareUrl($data)
+	{
+		if (!is_array($data)) {
+			$data = [$data];
+		}
 
-        if (!isset($this->apiUrl)) {
-            throw new Exception("Api Url must be set.");
-        }
+		if (!isset($this->apiUrl)) {
+			throw new Exception("Api Url must be set.");
+		}
 
-        $url = vsprintf($this->apiUrl, $data);
+		$url = vsprintf($this->apiUrl, $data);
 
-        return $this->connector->getBaseApiUrl() . $url;
-    }
+		return $this->connector->getBaseApiUrl() . $url;
+	}
 }
