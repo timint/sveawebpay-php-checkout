@@ -51,7 +51,6 @@ class ApiClient
         $this->httpClient->setOption(CURLOPT_HTTPHEADER, $headers);
         $this->httpClient->setOption(CURLOPT_RETURNTRANSFER, 1);
         $this->httpClient->setOption(CURLOPT_HEADER, 1);
-        $this->httpClient->setOption(CURLOPT_SSL_VERIFYPEER, false);
 
         if ($request->getMethod() === 'POST') {
             $this->httpClient->setOption(CURLOPT_POST, 1);
